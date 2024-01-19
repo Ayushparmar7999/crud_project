@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<h1>{{data | default:'welcome to gust'}}</h1>
+{% if data %}
+<a href="{% url 'delete' %}"><button>Logout</button></a>
+{% endif %}
+{% endblock %}

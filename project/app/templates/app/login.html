@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'logindata' %}" method="post">
+    {% csrf_token %}
+
+  
+    Enter Email : <input type="text" name="email">
+    <br>
+    Enter Password : <input type="password" name="password" >
+    <br>
+    <button>Login</button>
+    
+</form>
+{% endblock %}
