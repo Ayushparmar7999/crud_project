@@ -14,9 +14,11 @@ urlpatterns = [
    path('logindata/',logindata,name='logindata'),
    path("query/",query,name="query"),
    path('showdata/<str:pk>',showdata,name='showdata'),
+
    path('delete/<int:pk>',delete,name='delete'),
    path('edit/<int:pk>',edit,name='edit'),
-   path('update/<int:pk>',update,name='update')
+   path('update/<int:pk>',update,name='update'),
+   path('search/<str:pk>',search,name='search')
    
   
    

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Student,Query
+from django.db.models import Q
 # Create your views here.
 
 
@@ -106,12 +107,24 @@ def query(request):
                     'contact':Contact,
                     'city':City
                 }
-    return render(request,'app/dash.html',{'key1':data})
+    return render(request,'app/dash.html',{'key':user})
 
 
 def showdata(request,pk):
-    data=Query.objects.filter(Email=pk)
-    return render(request,'app/showdata.html',{'key1':data})
+    Querydata=Query.objects.filter(Email=pk)
+
+    data = Student.objects.get(Email=pk)
+    Name = data.Name
+    Email = data.Email
+    Contact = data.Contact
+    City=data.City
+    user={
+        'name':Name,
+        'email':Email,
+        'contact':Contact,
+        'city':City}
+    
+    return render(request,'app/showdata.html',{'key1':Querydata,'user':user})
 
 
 def edit(request,pk):
@@ -158,6 +171,7 @@ def update(request,pk):
         'city':City                }
     return render(request,"app/dash.html",{'key':user})
 
+
 def delete(request,pk):
     # print(pk)
     data = Query.objects.get(id=pk)
@@ -172,6 +186,27 @@ def delete(request,pk):
         'name':Name,
         'email':Email,
         'contact':Contact,
-        'city':City                }
-    return render(request,"app/dash.html",{'key':user})
+        'city':City
+                                     
+                                      }
+    return render(request,"app/showdata.html",{'key':user})
 
+
+def search(request,pk):
+    squery=request.POST['search']
+
+    data = Student.objects.get(Email=pk)
+    Name = data.Name
+    email = data.Email
+    Contact = data.Contact
+    City=data.City
+    password=data.Password
+
+    user={
+        'name':Name,
+        'email':email,
+        'contact':Contact,
+        'city':City,
+        'password':password}
+    alldata=Query.objects.filter(Q(Email=email) & Q(Query=squery))
+    return render(request,"app/showdata.html",{'key1':alldata,'user':user})
