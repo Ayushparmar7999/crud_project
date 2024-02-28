@@ -1,7 +1,11 @@
-body{
-    background-color: black;
+*{
     margin-top: 0px;
     padding: 0px;
+
+}
+body{
+    background-color: black;
+  
 }
 .loginform{
     margin-top: 11%;
@@ -39,3 +43,13 @@ body{
 .nav-item {
     margin-left: 110px;
  }
+
+.queryportion input{
+    color: white;
+    margin-top: 70px;
+  
+ }
+
+   
+
+ 

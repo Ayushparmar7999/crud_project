@@ -4,11 +4,8 @@ from .models import Student,Query
 from django.db.models import Q
 # Create your views here.
 
-
-
 # ****************************************for crud operation************************************************
  
-
 # data save
 def home(request):
     return render(request, "app/home.html")
@@ -22,10 +19,8 @@ def contact(request):
 def services(request):
     return render(request, "app/services.html")
 
-
 def register(request):
         return render(request, "app/register.html")
-
 
 def login(request):
         return render(request, "app/login.html")
@@ -187,10 +182,8 @@ def delete(request,pk):
         'email':Email,
         'contact':Contact,
         'city':City
-                                     
-                                      }
+                                                                 }
     return render(request,"app/showdata.html",{'key':user})
-
 
 def search(request,pk):
     squery=request.POST['search']
